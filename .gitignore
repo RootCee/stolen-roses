@@ -3,3 +3,8 @@
 assets/*.wav
 assets/*.aiff
 assets/*.flac
+
+# Ignore large audio
+assets/*.wav
+assets/*.aiff
+assets/*.flac
