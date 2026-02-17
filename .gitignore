@@ -1,0 +1,5 @@
+
+# Audio (don’t commit large files)
+assets/*.wav
+assets/*.aiff
+assets/*.flac
