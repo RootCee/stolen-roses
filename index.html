@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stolen Roses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fullscreen background container -->
+    <div id="background-container"></div>
+
+    <!-- Top-left music toggle button -->
+    <button id="music-toggle" aria-label="Toggle music">🔇</button>
+
+    <!-- Top-right progress indicator -->
+    <div id="progress-indicator">Fragments: 0</div>
+
+    <!-- Overlay container for hotspots (populated by JS) -->
+    <div id="hotspot-container"></div>
+
+    <!-- Modal popup (hidden by default) -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="modal-close" class="close-button" aria-label="Close">&times;</button>
+            <div id="clue-text" class="clue-text"></div>
+        </div>
+    </div>
+
+    <!-- Unlock button (hidden by default) -->
+    <button id="unlock-button" class="hidden">Unlock</button>
+
+    <!-- Final message section (hidden by default) -->
+    <section id="final-message" class="hidden">
+        <div class="final-message-content">
+            <h1 id="final-title"></h1>
+            <p id="final-text"></p>
+        <div class="hint-text">Not everything that blooms is clean.</div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
