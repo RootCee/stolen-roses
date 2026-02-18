@@ -206,6 +206,21 @@ function handleHotspotClick(hotspot) {
         updateProgress();
         triggerFlickerEffect();
 
+        // Trigger pulse animation on the clicked hotspot
+        const hotspotElement = hotspotContainer.querySelector(`.hotspot[data-id="${hotspot.id}"]`);
+        if (hotspotElement) {
+            // Remove class to ensure animation restarts reliably
+            hotspotElement.classList.remove('pulse');
+            // Force reflow to restart animation
+            void hotspotElement.offsetWidth;
+            // Add pulse class
+            hotspotElement.classList.add('pulse');
+            // Remove after animation completes
+            setTimeout(() => {
+                hotspotElement.classList.remove('pulse');
+            }, 950);
+        }
+
         // Check if all hotspots found
         if (state.foundHotspots.size === hotspots.length) {
             setTimeout(showUnlockButton, 800);
