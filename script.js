@@ -195,6 +195,12 @@ function setupEventListeners() {
 
     // Unlock button
     unlockButton.addEventListener('click', revealFinalMessage);
+
+    // Join garden button
+    document.getElementById('join-garden-button').addEventListener('click', () => {
+        triggerFlickerEffect();
+        setTimeout(() => window.open('https://t.me/nerdieblaq', '_blank'), 400);
+    });
 }
 
 // ============================================
