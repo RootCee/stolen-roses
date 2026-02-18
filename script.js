@@ -153,6 +153,17 @@ function injectHotspots() {
 
         hotspotContainer.appendChild(hotspotDiv);
     });
+
+    // One-time hint shimmer on first hotspot
+    setTimeout(() => {
+        const firstHotspot = hotspotContainer.querySelector('.hotspot');
+        if (firstHotspot) {
+            firstHotspot.classList.add('hint');
+            setTimeout(() => {
+                firstHotspot.classList.remove('hint');
+            }, 1200);
+        }
+    }, 900);
 }
 
 // ============================================
@@ -222,11 +233,7 @@ function closeModal() {
 // ============================================
 function updateProgress() {
     const count = state.foundHotspots.size;
-    if (count === 0) {
-        progressIndicator.textContent = 'Fragments: 0';
-    } else {
-        progressIndicator.textContent = `Fragments: ${romanNumerals[count - 1]}`;
-    }
+    progressIndicator.textContent = `Fragments: ${count} / ${hotspots.length}`;
 }
 
 // ============================================
