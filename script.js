@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createOverlayElements();
 
     // Initialize audio
-    audio = new Audio('./assets/music.mp3');
+    audio = new Audio('/assets/music.mp3');
     audio.loop = true;
     audio.volume = 0.3;
 
@@ -115,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize progress display
     updateProgress();
+
+    // Auto-play music on first user interaction
+    setupAutoPlayMusic();
 });
 
 // ============================================
@@ -192,6 +195,28 @@ function setupEventListeners() {
 
     // Unlock button
     unlockButton.addEventListener('click', revealFinalMessage);
+}
+
+// ============================================
+// AUTO-PLAY MUSIC ON FIRST TAP
+// ============================================
+function setupAutoPlayMusic() {
+    const startMusic = () => {
+        audio.play()
+            .then(() => {
+                state.musicPlaying = true;
+                musicToggle.textContent = '🔊';
+            })
+            .catch(err => {
+                console.log('Auto-play blocked or failed. User can enable music manually.');
+                state.musicPlaying = false;
+                musicToggle.textContent = '🔇';
+            });
+    };
+
+    // Listen for first user interaction (mobile-safe)
+    document.addEventListener('click', startMusic, { once: true });
+    document.addEventListener('touchstart', startMusic, { once: true });
 }
 
 // ============================================
